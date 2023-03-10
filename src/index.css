@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.main {
+  margin: 5% 10%;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

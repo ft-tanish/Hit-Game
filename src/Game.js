@@ -14,14 +14,14 @@ const Game = () => {
             setKeywordBox(randomBox);
             setTimeout(() => {
                 setKeywordBox(null);
-            }, 1000);
-        }, 1000);
+            }, 2000);
+        }, 2000);
 
         return () => clearInterval(intervalId);
     }, []);
 
-    const handleClick = (event) => {
-        if (event.target.id === `box-${keywordBox}`) {
+    const handleClick = (e) => {
+        if (e.target.id === `box-${keywordBox}`) {
             setScore(score + 5);
         } else {
             setScore(score - 2.5);
@@ -53,11 +53,15 @@ const Game = () => {
     }
 
     return (
-        <div>
+        <div className='main'>
             <div className="grid-container">{boxes}</div>
             <div>Score: {score}</div>
             <div>Time remaining: {timer}</div>
-            <button onClick={startGame}>Start</button>
+            {timer === 0 ? (
+                <div>Game Over! Your final score is {score}.</div>
+            ) : (
+                <button onClick={startGame}>Start</button>
+            )}
         </div>
     );
 };
